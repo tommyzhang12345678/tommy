@@ -1,11 +1,22 @@
-led.plot(2, 2)
-let _ = 0
-let _2 = 0
+input.onButtonPressed(Button.A, function () {
+    _ += -1
+})
+input.onButtonPressed(Button.B, function () {
+    _2 += 1
+})
+let _ = 2
+let _2 = 2
 basic.forever(function () {
-    if (input.buttonIsPressed(Button.A)) {
-        _ += 1
+    basic.clearScreen()
+    led.plot(_, 2)
+    basic.clearScreen()
+    led.plot(_2, 2)
+})
+basic.forever(function () {
+    if (_ == 4) {
+        basic.showArrow(ArrowNames.West)
     }
-    if (input.buttonIsPressed(Button.B)) {
-        _2 += 1
+    if (_2 == 0) {
+        basic.showArrow(ArrowNames.East)
     }
 })
